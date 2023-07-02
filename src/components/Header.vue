@@ -69,17 +69,7 @@ const count = ref(0)
       
       .signup-button
         width: 105px
-        height: 40px
         margin-left: 40px
-        background-color: $cyan
-        color: $white
-        font-weight: 700
-        border-radius: 20px
-        border: none
-
-        &:hover
-          cursor: pointer
-          background-color: $cyanHover
 
 
 </style>
