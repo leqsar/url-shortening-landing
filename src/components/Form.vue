@@ -1,10 +1,19 @@
 <script setup>
+    import { ref } from 'vue'
+
+    const url = ref('');
+
+    const emit = defineEmits(['setShortUrls']);
+
+    function callEmit() {
+        emit('setShortUrls', url) 
+    }
 
 </script>
 
 <template>
-    <form action="" class="form">
-        <input type="text" class="input">
+    <form action="submit" @submit.prevent="callEmit" class="form">
+        <input type="text" class="input" v-model="url">
         <button>Shorten It!</button>
     </form>
 </template>

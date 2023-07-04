@@ -4,6 +4,7 @@ body {
   width: 100%;
   margin: 0 auto;
   font-family: "Poppins", sans-serif;
+  background-color: #FAF9F6;
 }
 body h1, body h2, body h3, body p, body a, body li, body span, body button {
   text-decoration: none;
@@ -19,10 +20,14 @@ body button {
   border-radius: 20px;
   color: #FAF9F6;
   font-weight: 700;
+  transition: all 0.2s;
 }
 body button:hover {
   cursor: pointer;
   background-color: #9be3e2;
+}
+body button:active {
+  transform: scale(90%);
 }
 body ul {
   margin: 0;
