@@ -3,6 +3,8 @@
 
     const url = ref('');
 
+    const props = defineProps(['error'])
+
     const emit = defineEmits(['setShortUrls']);
 
     function callEmit() {
@@ -13,7 +15,14 @@
 
 <template>
     <form action="submit" @submit.prevent="callEmit" class="form">
-        <input type="text" class="input" v-model="url">
+        <input 
+            type="text"
+            placeholder="Shorten a link here ..."
+            class="input" 
+            :class="{'input-error': error}" 
+            v-model="url"
+        >
+        <p class="error" v-show="error">Please add a link</p>
         <button>Shorten It!</button>
     </form>
 </template>
@@ -23,6 +32,7 @@
     @import '../input.sass'
 
     .form
+        position: relative
         display: flex
         align-items: center
         gap: 25px
@@ -39,11 +49,26 @@
         .input
             width: 80%
             height: 65px
+            padding-left: 20px
+            font-size: 20px
             border-radius: 15px
+
+            &:focus
+                border: none
+                outline: none
+
+        .input-error
+            border: 4px solid $red
 
         button
             width: 20%
             height: 65px
+
+    .error
+        position: absolute
+        top: 125px
+        left: 8%
+        color: $red
 
 
 </style>

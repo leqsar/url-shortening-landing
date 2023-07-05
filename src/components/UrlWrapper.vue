@@ -6,18 +6,25 @@
 
     const props = defineProps(['urlArray'])
     const shortenedLink = ref()
-    const divs = ref([])
+    const links = ref([])
 
     onBeforeUpdate(() => {
-        divs.value = []
+        links.value = []
     })
 
     onMounted(() => {
       AOS.init()
     })
 
-    function copyUrl (index) {
-        navigator.clipboard.writeText(divs.value[index].textContent)
+    function copyUrl (event, index) {
+        const button = event.currentTarget
+        button.textContent = 'Copied!'
+        button.style.backgroundColor = 'hsl(257, 27%, 26%)'
+        setTimeout(() => {
+            button.textContent = 'Copy'
+            button.style.backgroundColor = 'hsl(180, 66%, 49%)'
+        }, 600)
+        navigator.clipboard.writeText(links.value[index].textContent)
     }
 </script>
 
@@ -27,11 +34,11 @@
             <p class="original">{{link.origin}}</p>
             <p 
                 class="shortened" 
-                :ref="el => { if (el) divs[i] = el }"
+                :ref="el => { if (el) links[i] = el }"
             >
                 {{link.shortened}}
             </p>
-            <button @click="copyUrl(i)">Copy</button>
+            <button @click="copyUrl($event, i)">Copy</button>
         </li>
     </ul>
 </template>
@@ -68,5 +75,6 @@
             margin-left: 2%
             width: 100px
             border-radius: 10px
+            transition: all 0.6s
 
 </style>

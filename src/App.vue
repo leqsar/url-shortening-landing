@@ -7,19 +7,22 @@
   import TheStatisticBlock from './components/TheStatisticBlock.vue'
   import UrlWrapper from './components/UrlWrapper.vue'
 
-  const urlArray = ref([]);
+  const urlArray = ref([])
+  const error = ref(false)
 
   function shortenTheLink(url) {
-    if(url !== '' && url ) {
-      fetch(`https://api.shrtco.de/v2/shorten?url=${url.value}`)                   
+    const pureUrl = url.value
+    if(pureUrl === '' || !pureUrl) error.value = true
+    if(pureUrl !== '' && pureUrl ) {
+      error.value = false
+      fetch(`https://api.shrtco.de/v2/shorten?url=${pureUrl}`)                   
         .then((res) => {
           return res.json()
         })
         .then((data) => {
           if(urlArray.value.length === 3) urlArray.value.shift()
-          console.log(data);
           urlArray.value.push({
-            origin: url.value,
+            origin: pureUrl,
             shortened: data.result.full_short_link
           })
         })
@@ -30,7 +33,7 @@
 <template>
   <Header />
   <TheMainBlock />
-  <Form @set-short-urls="shortenTheLink"/>
+  <Form @set-short-urls="shortenTheLink" :error="error"/>
   <UrlWrapper v-if="urlArray.length > 0" :urlArray="urlArray"/>
   <TheStatisticBlock />
   <TheBanner />
