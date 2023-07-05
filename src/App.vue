@@ -1,5 +1,5 @@
 <script setup>
-  import { ref } from 'vue'
+  import { ref, onMounted } from 'vue'
   import Header from './components/Header.vue'
   import TheMainBlock from './components/TheMainBlock.vue'
   import TheBanner from './components/TheBanner.vue'
@@ -9,6 +9,13 @@
 
   const urlArray = ref([])
   const error = ref(false)
+
+  onMounted(() => {
+    const storageArray = JSON.parse(sessionStorage.getItem('linkArray'))
+    if(storageArray.length > 0) {
+      urlArray.value = storageArray
+    }
+  })
 
   function shortenTheLink(url) {
     const pureUrl = url.value
@@ -25,6 +32,7 @@
             origin: pureUrl,
             shortened: data.result.full_short_link
           })
+          sessionStorage.setItem('linkArray', JSON.stringify(urlArray.value))
         })
     }   
     }
