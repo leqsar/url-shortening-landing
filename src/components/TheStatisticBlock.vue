@@ -74,6 +74,10 @@
             color: $gray
             line-height: 20px
 
+            @media screen and (max-width: 520px)
+              width: 100%
+              text-align: center
+
         .cards-wrapper
             position: relative
             display: grid
@@ -84,6 +88,11 @@
             height: 400px
             gap: 30px
 
+            @media screen and (max-width: 520px)
+              grid-template-columns: 100%
+              height: auto
+              gap: 60px
+
             .card
                 position: relative
                 height: 270px
@@ -93,7 +102,9 @@
                 box-shadow: 1px 0px  2px  2px $gray
                 z-index: 10
 
-                
+                @media screen and (max-width: 1024px)
+                  height: auto
+                  padding-bottom: 10px
 
                 &:first-of-type
                     align-self: start

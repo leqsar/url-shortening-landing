@@ -1,11 +1,4 @@
 <script setup>
-import { ref } from 'vue'
-
-defineProps({
-  msg: String,
-})
-
-const count = ref(0)
 </script>
 
 <template>
@@ -41,6 +34,9 @@ const count = ref(0)
       width: 20%
       margin-left: 3%
 
+      @media screen and (max-width: 1250px)
+        width: 30%
+
 
       .navigation
         display: flex
@@ -61,6 +57,9 @@ const count = ref(0)
       display: flex
       width: max-content
       margin-left: 34%
+
+      @media screen and (max-width: 1024px)
+        margin-left: 24%
       .login-button
         color: $grayishViolet
         font-weight: 700

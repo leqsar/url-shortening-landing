@@ -61,14 +61,35 @@
         border-radius: 10px
         background-color: white
 
+        @media screen and (max-width: 520px)
+            height: 156px
+            grid-template-rows: repeat(3, 1fr)
+            grid-template-columns: 100%
+
         .original
+            position: relative
             justify-self: start
             font-weight: 700
             overflow: hidden
+
+            @media screen and (max-width: 520px)
+                justify-self: center
+
+                &::after
+                    content: ''
+                    position: absolute
+                    top: 100%
+                    left: 0
+                    width: 100%
+                    border: 2px solid black
+
         .shortened
             justify-self: end
             color: $cyan
             font-weight: 700
+
+            @media screen and (max-width: 520px)
+                justify-self: center
 
         button 
             justify-self: end
@@ -76,5 +97,9 @@
             width: 100px
             border-radius: 10px
             transition: all 0.6s
+
+            @media screen and (max-width: 520px)
+                width: 80%
+                justify-self: center
 
 </style>
