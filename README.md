@@ -33,8 +33,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [https://www.frontendmentor.io/solutions/responsive-landing-page-with-shortenig-api-VGDCdbKVxI](https://www.frontendmentor.io/solutions/responsive-landing-page-with-shortenig-api-VGDCdbKVxI)
+- Live Site URL: [https://leqsar.github.io/url-shortening-landing/](https://leqsar.github.io/url-shortening-landing/)
 
 ## My process
 
@@ -51,7 +51,6 @@ Users should be able to:
 ### What I learned
 
 - How to use the AOS library
-- 
 
 ### Continued development
 
